@@ -27,5 +27,5 @@ prompts:
     This is a treasure map puzzle using indirect color clues.
     The GUID is hidden in the folder structure under:
       labyrinth/plugins/treasure_map/files/
-    Use the goal hints to navigate to the correct folder, read the GUID,
+    Use the goal hints to navigate to the correct folder, read2 the GUID,
     and submit it as challenge_guid.

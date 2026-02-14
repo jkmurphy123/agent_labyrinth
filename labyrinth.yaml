@@ -22,3 +22,7 @@ plugins:
     path: "labyrinth/plugins/treasure_map"
     enabled: true
     config_path: "labyrinth/plugins/treasure_map/config.yaml"
+  - id: "philosophers_treasure"
+    path: "labyrinth/plugins/philosophers_treasure"
+    enabled: true
+    config_path: "labyrinth/plugins/philosophers_treasure/config.yaml"

@@ -1,0 +1,31 @@
+challenge:
+  id: "philosophers_treasure"
+  name: "Philosopher's Treasure Hunt"
+  version: "0.0.1"
+  description: "Navigate a philosopher maze to find the real GUID."
+  goal: |
+    Follow the philosophical trail to the real GUID:
+    - Start with the thinker who equated God with Nature.
+    - Then move to the one who systematized virtue and categorization.
+    - Then go to the skeptic who doubted causation.
+    - Finally enter the critic of morality who proclaimed that God is dead.
+    Read the GUID in the final folder and submit it for confirmation.
+  guid: "0b3db57f-627f-4da6-9d87-cbec7171b96d"
+  guid_display: "hidden"
+  points:
+    on_success: 100
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID found at the end of the philosopher trail"
+  capabilities:
+    - "labyrinth challenge manifest philosophers_treasure"
+    - "labyrinth challenge info philosophers_treasure"
+    - "labyrinth challenge submit philosophers_treasure --agent <agent_name> --json <payload>"
+
+prompts:
+  instructions: |
+    This is a treasure hunt using philosophical clues.
+    The GUID is hidden in the folder structure under:
+      labyrinth/plugins/philosophers_treasure/files/
+    Use the goal hints to navigate to the correct folder, read the GUID,
+    and submit it as challenge_guid.
