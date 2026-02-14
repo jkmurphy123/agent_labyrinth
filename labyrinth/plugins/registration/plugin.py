@@ -14,6 +14,13 @@ class Plugin(BaseChallengePlugin):
         return cfg.get("prompts", {}).get("instructions", "").strip()
 
     def submit(self, agent_name: str, submission: dict[str, Any], cfg: dict[str, Any]) -> ChallengeResult:
+        if not self.validate_guid(submission, cfg):
+            return ChallengeResult(
+                status="fail",
+                points=0,
+                message="Invalid or missing challenge_guid.",
+            )
+
         proof_phrase = submission.get("proof_phrase")
         required = "LABYRINTH: I REGISTERED"
 

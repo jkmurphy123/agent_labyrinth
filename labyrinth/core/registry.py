@@ -30,6 +30,14 @@ class BaseChallengePlugin:
             "capabilities": challenge.get("capabilities", []),
         }
 
+    def get_secret_guid(self, cfg: dict[str, Any]) -> str:
+        return str(cfg.get("challenge", {}).get("guid", "")).strip()
+
+    def validate_guid(self, submission: dict[str, Any], cfg: dict[str, Any]) -> bool:
+        expected = self.get_secret_guid(cfg)
+        provided = submission.get("challenge_guid")
+        return bool(expected) and isinstance(provided, str) and provided.strip() == expected
+
     def get_instructions(self, cfg: dict[str, Any]) -> str:
         raise NotImplementedError
 

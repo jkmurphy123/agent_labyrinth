@@ -38,7 +38,17 @@ def load_master_config(path: str | Path) -> LabyrinthConfig:
     plugins_raw = raw.get("plugins", [])
     plugins: list[PluginSpec] = []
     for item in plugins_raw:
-        plugin_path = item["path"]
+        plugin_path = item.get("path")
+        if not plugin_path:
+            module = item.get("module", "")
+            if isinstance(module, str) and module:
+                mod_path = module.split(":", 1)[0]
+                # Convert "labyrinth.plugins.foo.plugin" -> "labyrinth/plugins/foo"
+                parts = mod_path.split(".")
+                if len(parts) >= 3:
+                    plugin_path = str(Path(*parts[:-1]))
+        if not plugin_path:
+            raise KeyError("path")
         if not Path(plugin_path).is_absolute():
             plugin_path = str((master_path.parent / plugin_path).resolve())
         config_path = item["config_path"]

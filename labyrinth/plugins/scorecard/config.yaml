@@ -4,11 +4,13 @@ challenge:
   version: "0.0.1"
   description: "Show all challenges and your current points."
   goal: "Retrieve a scorecard of all challenges and your current points."
+  guid: "2b9b6d3a-6b3a-4d4f-8f5d-24e8a89b2d13"
   points:
     on_success: 0
     on_repeat: 0
   inputs:
     config_path: "string; optional path to labyrinth.yaml"
+    challenge_guid: "string; submit the challenge GUID shown in tables"
   capabilities:
     - "labyrinth challenge submit scorecard --agent <agent_name> --json <payload>"
 

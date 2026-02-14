@@ -33,18 +33,20 @@ def _resolve_master_config(submission: dict[str, Any]) -> Path | None:
 
 
 def _build_table(rows: list[dict[str, Any]]) -> str:
-    headers = ["ID", "Name", "Max", "Agent"]
+    headers = ["ID", "Name", "Max", "Agent", "GUID"]
     widths = {
         "ID": len(headers[0]),
         "Name": len(headers[1]),
         "Max": len(headers[2]),
         "Agent": len(headers[3]),
+        "GUID": len(headers[4]),
     }
     for r in rows:
         widths["ID"] = max(widths["ID"], len(str(r["id"])))
         widths["Name"] = max(widths["Name"], len(str(r["name"])))
         widths["Max"] = max(widths["Max"], len(str(r["max_points"])))
         widths["Agent"] = max(widths["Agent"], len(str(r["agent_points"])))
+        widths["GUID"] = max(widths["GUID"], len(str(r["guid"])))
 
     def fmt(values: list[str]) -> str:
         return " | ".join(
@@ -53,6 +55,7 @@ def _build_table(rows: list[dict[str, Any]]) -> str:
                 values[1].ljust(widths["Name"]),
                 values[2].rjust(widths["Max"]),
                 values[3].rjust(widths["Agent"]),
+                values[4].ljust(widths["GUID"]),
             ]
         )
 
@@ -62,6 +65,7 @@ def _build_table(rows: list[dict[str, Any]]) -> str:
             "-" * widths["Name"],
             "-" * widths["Max"],
             "-" * widths["Agent"],
+            "-" * widths["GUID"],
         ]
     )
 
@@ -74,6 +78,7 @@ def _build_table(rows: list[dict[str, Any]]) -> str:
                     str(r["name"]),
                     str(r["max_points"]),
                     str(r["agent_points"]),
+                    str(r["guid"]),
                 ]
             )
         )
@@ -128,17 +133,27 @@ class Plugin(BaseChallengePlugin):
             points_cfg = p.cfg.get("challenge", {}).get("points", {})
             max_points = int(points_cfg.get("on_success", 0))
             name = p.cfg.get("challenge", {}).get("name", getattr(p.instance, "name", pid))
+            guid = str(p.cfg.get("challenge", {}).get("guid", "")).strip()
             rows.append(
                 {
                     "id": pid,
                     "name": name,
                     "max_points": max_points,
                     "agent_points": points_by_challenge.get(pid, 0),
+                    "guid": guid,
                 }
             )
 
         rows.sort(key=lambda r: (r["max_points"], r["id"]))
         table = _build_table(rows)
+        if not self.validate_guid(submission, cfg):
+            return ChallengeResult(
+                status="fail",
+                points=0,
+                message=f"{table}\n\nInvalid or missing challenge_guid.",
+                evidence={"scorecard": rows},
+            )
+
         return ChallengeResult(
             status="success",
             points=0,

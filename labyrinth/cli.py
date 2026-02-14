@@ -128,9 +128,11 @@ def challenge_list(
     table = Table(title="Labyrinth Challenges")
     table.add_column("ID", style="bold")
     table.add_column("Name")
+    table.add_column("GUID")
     table.add_column("Enabled")
     for pid, p in plugins.items():
-        table.add_row(pid, getattr(p.instance, "name", pid), "yes")
+        guid = str(p.cfg.get("challenge", {}).get("guid", "")).strip()
+        table.add_row(pid, getattr(p.instance, "name", pid), guid, "yes")
     console.print(table)
 
 
@@ -142,9 +144,11 @@ def plugins_list(
     table = Table(title="Labyrinth Plugins")
     table.add_column("ID", style="bold")
     table.add_column("Name")
+    table.add_column("GUID")
     table.add_column("Path")
     for pid, p in plugins.items():
-        table.add_row(pid, getattr(p.instance, "name", pid), p.spec.path)
+        guid = str(p.cfg.get("challenge", {}).get("guid", "")).strip()
+        table.add_row(pid, getattr(p.instance, "name", pid), guid, p.spec.path)
     console.print(table)
 
 
