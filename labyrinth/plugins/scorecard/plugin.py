@@ -133,7 +133,7 @@ class Plugin(BaseChallengePlugin):
             points_cfg = p.cfg.get("challenge", {}).get("points", {})
             max_points = int(points_cfg.get("on_success", 0))
             name = p.cfg.get("challenge", {}).get("name", getattr(p.instance, "name", pid))
-            guid = str(p.cfg.get("challenge", {}).get("guid", "")).strip()
+            guid = p.instance.get_display_guid(p.cfg)
             rows.append(
                 {
                     "id": pid,

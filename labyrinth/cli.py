@@ -131,7 +131,7 @@ def challenge_list(
     table.add_column("GUID")
     table.add_column("Enabled")
     for pid, p in plugins.items():
-        guid = str(p.cfg.get("challenge", {}).get("guid", "")).strip()
+        guid = p.instance.get_display_guid(p.cfg)
         table.add_row(pid, getattr(p.instance, "name", pid), guid, "yes")
     console.print(table)
 
@@ -147,7 +147,7 @@ def plugins_list(
     table.add_column("GUID")
     table.add_column("Path")
     for pid, p in plugins.items():
-        guid = str(p.cfg.get("challenge", {}).get("guid", "")).strip()
+        guid = p.instance.get_display_guid(p.cfg)
         table.add_row(pid, getattr(p.instance, "name", pid), guid, p.spec.path)
     console.print(table)
 

@@ -14,3 +14,7 @@ plugins:
     path: "labyrinth/plugins/scorecard"
     enabled: true
     config_path: "labyrinth/plugins/scorecard/config.yaml"
+  - id: "cypher"
+    path: "labyrinth/plugins/cypher"
+    enabled: true
+    config_path: "labyrinth/plugins/cypher/config.yaml"

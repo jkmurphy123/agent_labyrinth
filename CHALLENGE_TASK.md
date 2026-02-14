@@ -28,6 +28,7 @@ Create your own detailed plan to solve a Labyrinth challenge by querying the man
    - Option B: Challenge list table:
      `labyrinth challenge list`
    - Extract the GUID for `CHALLENGE_ID`.
+   - If the goal or instructions indicate the GUID is encrypted, decrypt it before submitting.
 
 4. Build your plan.
    - Identify success criteria from `scoring`.

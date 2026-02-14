@@ -1,0 +1,22 @@
+challenge:
+  id: "cypher"
+  name: "Cypher"
+  version: "0.0.1"
+  description: "A simple cypher challenge."
+  goal: "Decrypt this GUID and submit it for confirmation: 8g4b3d2c-0e5f-5d7g-9b3c-2e6f7g8b9c0d"
+  guid: "7f3a2c1b-9d4e-4c6f-8a2b-1d5e6f7a8b9c"
+  guid_display: "8g4b3d2c-0e5f-5d7g-9b3c-2e6f7g8b9c0d"
+  points:
+    on_success: 20
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the decrypted GUID"
+  capabilities:
+    - "labyrinth challenge manifest cypher"
+    - "labyrinth challenge info cypher"
+    - "labyrinth challenge submit cypher --agent <agent_name> --json <payload>"
+
+prompts:
+  instructions: |
+    This is a simple cypher challenge.
+    Decrypt the GUID shown in the goal and submit it as challenge_guid.

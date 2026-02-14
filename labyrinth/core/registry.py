@@ -28,10 +28,14 @@ class BaseChallengePlugin:
                 "on_repeat": int(points_cfg.get("on_repeat", 0)),
             },
             "capabilities": challenge.get("capabilities", []),
+            "guid": challenge.get("guid_display", challenge.get("guid", "")),
         }
 
     def get_secret_guid(self, cfg: dict[str, Any]) -> str:
         return str(cfg.get("challenge", {}).get("guid", "")).strip()
+
+    def get_display_guid(self, cfg: dict[str, Any]) -> str:
+        return str(cfg.get("challenge", {}).get("guid_display", self.get_secret_guid(cfg))).strip()
 
     def validate_guid(self, submission: dict[str, Any], cfg: dict[str, Any]) -> bool:
         expected = self.get_secret_guid(cfg)
