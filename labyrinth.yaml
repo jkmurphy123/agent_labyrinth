@@ -26,3 +26,7 @@ plugins:
     path: "labyrinth/plugins/philosophers_treasure"
     enabled: true
     config_path: "labyrinth/plugins/philosophers_treasure/config.yaml"
+  - id: "palindrome"
+    path: "labyrinth/plugins/palindrome"
+    enabled: true
+    config_path: "labyrinth/plugins/palindrome/config.yaml"

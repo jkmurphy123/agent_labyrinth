@@ -1,0 +1,25 @@
+challenge:
+  id: "palindrome"
+  name: "Palindrome"
+  version: "0.0.1"
+  description: "Find the palindromic filename to locate the real GUID."
+  goal: |
+    One file in the folder contains a true palindrome name (6 letters).
+    Read the GUID inside that file and submit it for confirmation.
+  guid: "3a49a545-380e-4679-8542-354f82814ee5"
+  guid_display: "hidden"
+  points:
+    on_success: 20
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID found in the palindromic filename"
+  capabilities:
+    - "labyrinth challenge manifest palindrome"
+    - "labyrinth challenge info palindrome"
+    - "labyrinth challenge submit palindrome --agent <agent_name> --json <payload>"
+
+prompts:
+  instructions: |
+    Identify the palindromic 6-letter filename under:
+      labyrinth/plugins/palindrome/files/
+    Read the GUID inside that file and submit it as challenge_guid.
