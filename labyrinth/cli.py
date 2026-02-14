@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 import typer
+from importlib import metadata
 from rich.console import Console
 from rich.table import Table
 
@@ -15,6 +16,31 @@ from labyrinth.core.audit import append_audit
 
 app = typer.Typer(add_completion=False, help="Labyrinth: plugin-friendly challenges for OpenClaw agents")
 console = Console()
+
+
+def _get_version() -> str:
+    try:
+        return metadata.version("labyrinth")
+    except metadata.PackageNotFoundError:
+        return "0.0.0+local"
+
+
+@app.callback(invoke_without_command=True)
+def main(
+    ctx: typer.Context,
+    version: bool = typer.Option(
+        False,
+        "--version",
+        help="Show the Labyrinth version and exit.",
+        is_eager=True,
+    ),
+):
+    if version:
+        console.print(_get_version())
+        raise typer.Exit()
+    if ctx.invoked_subcommand is None:
+        console.print(ctx.get_help())
+        raise typer.Exit()
 
 
 def _get_env(config_path: str):
