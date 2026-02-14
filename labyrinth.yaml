@@ -18,3 +18,7 @@ plugins:
     path: "labyrinth/plugins/cypher"
     enabled: true
     config_path: "labyrinth/plugins/cypher/config.yaml"
+  - id: "treasure_map"
+    path: "labyrinth/plugins/treasure_map"
+    enabled: true
+    config_path: "labyrinth/plugins/treasure_map/config.yaml"

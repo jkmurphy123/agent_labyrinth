@@ -1,0 +1,31 @@
+challenge:
+  id: "treasure_map"
+  name: "Treasure Map"
+  version: "0.0.1"
+  description: "Follow indirect color clues to the correct GUID."
+  goal: |
+    Follow the map to the real GUID:
+    - Start in the folder named after the midnight sea.
+    - Then move into the folder named after the sky.
+    - Then step into the folder named after a blush.
+    - Finally, enter the folder named after soot.
+    Read the GUID in the final folder and submit it for confirmation.
+  guid: "93079d38-e3c0-4ec1-b48d-76d73d350c6d"
+  guid_display: "hidden"
+  points:
+    on_success: 40
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID found at the end of the treasure map"
+  capabilities:
+    - "labyrinth challenge manifest treasure_map"
+    - "labyrinth challenge info treasure_map"
+    - "labyrinth challenge submit treasure_map --agent <agent_name> --json <payload>"
+
+prompts:
+  instructions: |
+    This is a treasure map puzzle using indirect color clues.
+    The GUID is hidden in the folder structure under:
+      labyrinth/plugins/treasure_map/files/
+    Use the goal hints to navigate to the correct folder, read the GUID,
+    and submit it as challenge_guid.
