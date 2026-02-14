@@ -10,3 +10,7 @@ plugins:
     module: "labyrinth.plugins.registration.plugin:RegistrationChallenge"
     enabled: true
     config_path: "labyrinth/plugins/registration/config.yaml"
+  - id: "scorecard"
+    module: "labyrinth.plugins.scorecard.plugin:ScorecardChallenge"
+    enabled: true
+    config_path: "labyrinth/plugins/scorecard/config.yaml"

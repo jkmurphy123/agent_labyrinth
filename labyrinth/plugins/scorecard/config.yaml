@@ -1,0 +1,13 @@
+challenge:
+  id: "scorecard"
+  name: "Scorecard"
+  version: "0.0.1"
+  description: "Show all challenges and your current points."
+  points:
+    on_success: 0
+    on_repeat: 0
+
+prompts:
+  instructions: |
+    Submit a JSON payload with optional:
+      - config_path (path to labyrinth.yaml)
