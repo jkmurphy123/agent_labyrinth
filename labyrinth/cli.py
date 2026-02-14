@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 import typer
 from importlib import metadata
@@ -25,6 +26,29 @@ def _get_version() -> str:
         return "0.0.0+local"
 
 
+def _resolve_config_path(config_path: str) -> str:
+    path = Path(config_path)
+    if path.exists():
+        return str(path)
+
+    env_path = os.getenv("LABYRINTH_CONFIG")
+    if env_path:
+        env_candidate = Path(env_path)
+        if env_candidate.exists():
+            return str(env_candidate)
+
+    if config_path != "labyrinth.yaml":
+        return str(path)
+
+    cwd = Path.cwd()
+    for parent in [cwd, *cwd.parents]:
+        candidate = parent / "labyrinth.yaml"
+        if candidate.exists():
+            return str(candidate)
+
+    return str(path)
+
+
 @app.callback(invoke_without_command=True)
 def main(
     ctx: typer.Context,
@@ -44,7 +68,7 @@ def main(
 
 
 def _get_env(config_path: str):
-    cfg = load_master_config(config_path)
+    cfg = load_master_config(_resolve_config_path(config_path))
     conn = connect(cfg.db_path)
     init_db(conn)
     plugins = load_plugins(cfg.plugins)
