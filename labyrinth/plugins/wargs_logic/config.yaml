@@ -1,0 +1,28 @@
+challenge:
+  id: "wargs_logic"
+  name: "Wargs Logic Problem"
+  version: "0.0.1"
+  description: "Solve a syllogism to choose the correct file."
+  goal: |
+    Solve the logic problem and read the GUID from the correct file:
+    "If all Wargs are Twerps and no Twerps are Gollums, then no Gollums are definitely Wargs."
+  guid: "4b0a3a7e-5672-4b2d-b782-abbe6480d949"
+  guid_display: "hidden"
+  points:
+    on_success: 20
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID from the correct file"
+  capabilities:
+    - "labyrinth challenge manifest wargs_logic"
+    - "labyrinth challenge info wargs_logic"
+    - "labyrinth challenge submit wargs_logic --agent <agent_name> --json <payload>"
+
+prompts:
+  instructions: |
+    The files are located at:
+      labyrinth/plugins/wargs_logic/files/
+    Determine whether the statement is logically valid or invalid.
+    - If the statement is valid, read the GUID in true.txt.
+    - If the statement is invalid, read the GUID in false.txt.
+    Submit the GUID you read as challenge_guid.

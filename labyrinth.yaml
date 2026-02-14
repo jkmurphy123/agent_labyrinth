@@ -30,3 +30,7 @@ plugins:
     path: "labyrinth/plugins/palindrome"
     enabled: true
     config_path: "labyrinth/plugins/palindrome/config.yaml"
+  - id: "wargs_logic"
+    path: "labyrinth/plugins/wargs_logic"
+    enabled: true
+    config_path: "labyrinth/plugins/wargs_logic/config.yaml"
