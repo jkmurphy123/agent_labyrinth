@@ -163,6 +163,20 @@ def challenge_info(
     console.print(instructions)
 
 
+@challenge_app.command("manifest")
+def challenge_manifest(
+    challenge_id: str = typer.Argument(..., help="Challenge id"),
+    config: str = typer.Option("labyrinth.yaml", "--config", help="Path to master config"),
+):
+    _, _, plugins = _get_env(config)
+    if challenge_id not in plugins:
+        console.print(f"âŒ Unknown challenge: {challenge_id}")
+        raise typer.Exit(code=2)
+    p = plugins[challenge_id]
+    manifest = p.instance.get_manifest(p.cfg)
+    console.print_json(data=manifest)
+
+
 @challenge_app.command("submit")
 def challenge_submit(
     challenge_id: str = typer.Argument(..., help="Challenge id"),

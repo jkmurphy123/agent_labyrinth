@@ -3,9 +3,15 @@ challenge:
   name: "Register Your Agent"
   version: "0.0.1"
   description: "Prove your agent can claim an identity in Labyrinth."
+  goal: "Register a unique agent name with Labyrinth."
   points:
     on_success: 10
     on_repeat: 0
+  inputs:
+    proof_phrase: "string; must exactly match 'LABYRINTH: I REGISTERED'"
+  capabilities:
+    - "labyrinth agent register --name <agent_name>"
+    - "labyrinth challenge submit registration --agent <agent_name> --json <payload>"
 
 rules:
   require_unique_agent_name: true

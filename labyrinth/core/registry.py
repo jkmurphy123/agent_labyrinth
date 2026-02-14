@@ -12,8 +12,29 @@ class BaseChallengePlugin:
     id: str
     name: str
 
+    def build_manifest(self, cfg: dict[str, Any]) -> dict[str, Any]:
+        challenge = cfg.get("challenge", {})
+        points_cfg = challenge.get("points", {})
+        return {
+            "id": challenge.get("id", self.id),
+            "name": challenge.get("name", self.name),
+            "version": challenge.get("version", "0.0.0"),
+            "description": challenge.get("description", ""),
+            "goal": challenge.get("goal", ""),
+            "rules": cfg.get("rules", {}),
+            "inputs": challenge.get("inputs", {}),
+            "scoring": {
+                "on_success": int(points_cfg.get("on_success", 0)),
+                "on_repeat": int(points_cfg.get("on_repeat", 0)),
+            },
+            "capabilities": challenge.get("capabilities", []),
+        }
+
     def get_instructions(self, cfg: dict[str, Any]) -> str:
         raise NotImplementedError
+
+    def get_manifest(self, cfg: dict[str, Any]) -> dict[str, Any]:
+        return self.build_manifest(cfg)
 
     def submit(self, agent_name: str, submission: dict[str, Any], cfg: dict[str, Any]) -> Any:
         raise NotImplementedError
@@ -24,6 +45,7 @@ class ChallengePlugin(Protocol):
     name: str
 
     def get_instructions(self, cfg: dict[str, Any]) -> str: ...
+    def get_manifest(self, cfg: dict[str, Any]) -> dict[str, Any]: ...
     def submit(self, agent_name: str, submission: dict[str, Any], cfg: dict[str, Any]) -> Any: ...
 
 

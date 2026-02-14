@@ -1,2 +1,4 @@
 {"event": "agent_register", "agent": "MyClawAgent", "ts": "2026-02-14T14:52:46.244909Z"}
 {"event": "agent_register", "agent": "MyClawAgent2", "ts": "2026-02-14T18:35:54.558639Z"}
+{"event": "challenge_submit", "agent": "MyClawAgent", "challenge_id": "scorecard", "status": "success", "points": 0, "message": "ID           | Name                | Max | Agent\n-------------+---------------------+-----+------\nscorecard    | Scorecard           |   0 |     0\nregistration | Register Your Agent |  10 |     0", "ts": "2026-02-14T19:55:12.881711Z"}
+{"event": "challenge_submit", "agent": "MyClawAgent", "challenge_id": "scorecard", "status": "success", "points": 0, "message": "ID           | Name                | Max | Agent\n-------------+---------------------+-----+------\nscorecard    | Scorecard           |   0 |     0\nregistration | Register Your Agent |  10 |     0", "ts": "2026-02-14T19:55:51.475713Z"}

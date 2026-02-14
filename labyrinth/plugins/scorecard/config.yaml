@@ -3,9 +3,14 @@ challenge:
   name: "Scorecard"
   version: "0.0.1"
   description: "Show all challenges and your current points."
+  goal: "Retrieve a scorecard of all challenges and your current points."
   points:
     on_success: 0
     on_repeat: 0
+  inputs:
+    config_path: "string; optional path to labyrinth.yaml"
+  capabilities:
+    - "labyrinth challenge submit scorecard --agent <agent_name> --json <payload>"
 
 prompts:
   instructions: |
