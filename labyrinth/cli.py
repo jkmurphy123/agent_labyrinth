@@ -77,8 +77,10 @@ def _get_env(config_path: str):
 
 agent_app = typer.Typer(help="Agent operations")
 challenge_app = typer.Typer(help="Challenge operations")
+plugins_app = typer.Typer(help="Plugin operations")
 app.add_typer(agent_app, name="agent")
 app.add_typer(challenge_app, name="challenge")
+app.add_typer(plugins_app, name="plugins")
 
 
 @agent_app.command("register")
@@ -129,6 +131,20 @@ def challenge_list(
     table.add_column("Enabled")
     for pid, p in plugins.items():
         table.add_row(pid, getattr(p.instance, "name", pid), "yes")
+    console.print(table)
+
+
+@plugins_app.command("list")
+def plugins_list(
+    config: str = typer.Option("labyrinth.yaml", "--config", help="Path to master config"),
+):
+    _, _, plugins = _get_env(config)
+    table = Table(title="Labyrinth Plugins")
+    table.add_column("ID", style="bold")
+    table.add_column("Name")
+    table.add_column("Path")
+    for pid, p in plugins.items():
+        table.add_row(pid, getattr(p.instance, "name", pid), p.spec.path)
     console.print(table)
 
 
