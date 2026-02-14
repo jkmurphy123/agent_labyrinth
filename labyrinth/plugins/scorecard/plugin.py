@@ -7,7 +7,7 @@ from typing import Any
 from labyrinth.core.config import load_master_config
 from labyrinth.core.db import connect, fetch_all, fetch_one
 from labyrinth.core.models import ChallengeResult
-from labyrinth.core.registry import load_plugins
+from labyrinth.core.registry import BaseChallengePlugin, load_plugins
 
 
 def _resolve_master_config(submission: dict[str, Any]) -> Path | None:
@@ -80,7 +80,7 @@ def _build_table(rows: list[dict[str, Any]]) -> str:
     return "\n".join(lines)
 
 
-class ScorecardChallenge:
+class Plugin(BaseChallengePlugin):
     id = "scorecard"
     name = "Scorecard"
 

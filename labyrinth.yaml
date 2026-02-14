@@ -7,10 +7,10 @@ leaderboard:
 
 plugins:
   - id: "registration"
-    module: "labyrinth.plugins.registration.plugin:RegistrationChallenge"
+    path: "labyrinth/plugins/registration"
     enabled: true
     config_path: "labyrinth/plugins/registration/config.yaml"
   - id: "scorecard"
-    module: "labyrinth.plugins.scorecard.plugin:ScorecardChallenge"
+    path: "labyrinth/plugins/scorecard"
     enabled: true
     config_path: "labyrinth/plugins/scorecard/config.yaml"

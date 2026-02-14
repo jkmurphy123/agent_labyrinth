@@ -3,9 +3,10 @@ from __future__ import annotations
 from typing import Any
 
 from labyrinth.core.models import ChallengeResult
+from labyrinth.core.registry import BaseChallengePlugin
 
 
-class RegistrationChallenge:
+class Plugin(BaseChallengePlugin):
     id = "registration"
     name = "Register Your Agent"
 

@@ -9,7 +9,7 @@ import yaml
 @dataclass(frozen=True)
 class PluginSpec:
     id: str
-    module: str
+    path: str
     enabled: bool
     config_path: str
 
@@ -38,13 +38,16 @@ def load_master_config(path: str | Path) -> LabyrinthConfig:
     plugins_raw = raw.get("plugins", [])
     plugins: list[PluginSpec] = []
     for item in plugins_raw:
+        plugin_path = item["path"]
+        if not Path(plugin_path).is_absolute():
+            plugin_path = str((master_path.parent / plugin_path).resolve())
         config_path = item["config_path"]
         if not Path(config_path).is_absolute():
             config_path = str((master_path.parent / config_path).resolve())
         plugins.append(
             PluginSpec(
                 id=item["id"],
-                module=item["module"],
+                path=plugin_path,
                 enabled=bool(item.get("enabled", True)),
                 config_path=config_path,
             )
