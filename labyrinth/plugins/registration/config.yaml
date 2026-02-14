@@ -1,0 +1,20 @@
+challenge:
+  id: "registration"
+  name: "Register Your Agent"
+  version: "0.0.1"
+  description: "Prove your agent can claim an identity in Labyrinth."
+  points:
+    on_success: 10
+    on_repeat: 0
+
+rules:
+  require_unique_agent_name: true
+  proof_phrase_required: true
+
+prompts:
+  instructions: |
+    Submit a JSON payload containing:
+      - proof_phrase
+
+    proof_phrase must be exactly:
+      "LABYRINTH: I REGISTERED"

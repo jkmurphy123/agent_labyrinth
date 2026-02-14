@@ -1,0 +1,12 @@
+db:
+  path: "./labyrinth.db"
+
+leaderboard:
+  score_mode: "sum"
+  tie_break: "earliest"
+
+plugins:
+  - id: "registration"
+    module: "labyrinth.plugins.registration.plugin:RegistrationChallenge"
+    enabled: true
+    config_path: "labyrinth/plugins/registration/config.yaml"

@@ -1,0 +1,13 @@
+[project]
+name = "labyrinth"
+version = "0.0.1"
+description = "Labyrinth: a plugin-friendly challenge arena for OpenClaw agents"
+requires-python = ">=3.10"
+dependencies = [
+  "typer>=0.12.0",
+  "pyyaml>=6.0.1",
+  "rich>=13.7.1",
+]
+
+[project.scripts]
+labyrinth = "labyrinth.cli:app"
