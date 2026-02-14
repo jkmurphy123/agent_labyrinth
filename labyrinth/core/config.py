@@ -29,18 +29,24 @@ def load_yaml(path: str | Path) -> dict[str, Any]:
 
 
 def load_master_config(path: str | Path) -> LabyrinthConfig:
-    raw = load_yaml(path)
+    master_path = Path(path).resolve()
+    raw = load_yaml(master_path)
     db_path = raw.get("db", {}).get("path", "./labyrinth.db")
+    if not Path(db_path).is_absolute():
+        db_path = str((master_path.parent / db_path).resolve())
 
     plugins_raw = raw.get("plugins", [])
     plugins: list[PluginSpec] = []
     for item in plugins_raw:
+        config_path = item["config_path"]
+        if not Path(config_path).is_absolute():
+            config_path = str((master_path.parent / config_path).resolve())
         plugins.append(
             PluginSpec(
                 id=item["id"],
                 module=item["module"],
                 enabled=bool(item.get("enabled", True)),
-                config_path=item["config_path"],
+                config_path=config_path,
             )
         )
 
