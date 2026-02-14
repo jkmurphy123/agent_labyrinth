@@ -9,7 +9,7 @@ from rich.console import Console
 from rich.table import Table
 
 from labyrinth.core.config import load_master_config
-from labyrinth.core.db import connect, init_db, fetch_one
+from labyrinth.core.db import connect, init_db, fetch_one, fetch_all
 from labyrinth.core.registry import load_plugins
 from labyrinth.core.scoring import leaderboard as lb
 from labyrinth.core.audit import append_audit
@@ -95,6 +95,27 @@ def agent_register(
     except Exception as e:
         console.print(f"❌ Could not register agent '{name}': {e}")
         raise typer.Exit(code=1)
+
+
+@agent_app.command("list")
+def agent_list(
+    config: str = typer.Option("labyrinth.yaml", "--config", help="Path to master config"),
+):
+    _, conn, _ = _get_env(config)
+    rows = fetch_all(conn, "SELECT id, name, created_at FROM agents ORDER BY id ASC")
+    if not rows:
+        console.print("No agents registered yet.")
+        return
+
+    table = Table(title="Labyrinth Agents")
+    table.add_column("ID", justify="right")
+    table.add_column("Name", style="bold")
+    table.add_column("Created", justify="right")
+
+    for r in rows:
+        table.add_row(str(r["id"]), r["name"], r["created_at"])
+
+    console.print(table)
 
 
 @challenge_app.command("list")
