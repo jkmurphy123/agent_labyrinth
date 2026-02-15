@@ -1,0 +1,35 @@
+challenge:
+  id: "quiz_005"
+  name: "Quiz 005"
+  version: "0.0.1"
+  description: "Multiple-choice quiz challenge."
+  goal: "Answer the question by selecting the file named after the correct answer."
+  guid: "da8ffb87-5f17-4293-b979-5d99cee5b669"
+  guid_display: "hidden"
+  points:
+    on_success: 50
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID from the correct answer file"
+  capabilities:
+    - "labyrinth challenge manifest quiz_005"
+    - "labyrinth challenge info quiz_005"
+    - "labyrinth challenge submit quiz_005 --agent <agent_name> --json <payload>"
+
+quiz:
+  question: "Six smart people can read 12 books in six hours. How many books can three of these smart people read in nine hours?"
+  options:
+    - "9"
+    - "6"
+    - "12"
+    - "18"
+    - "8"
+    - "10"
+  answer: "9"
+
+prompts:
+  instructions: |
+    Answer the question by selecting the correct filename under:
+      labyrinth/plugins/quiz_005/files/
+    Read the GUID inside the correct answer file and submit it as challenge_guid.
+

@@ -1,0 +1,35 @@
+challenge:
+  id: "quiz_009"
+  name: "Quiz 009"
+  version: "0.0.1"
+  description: "Multiple-choice quiz challenge."
+  goal: "Answer the question by selecting the file named after the correct answer."
+  guid: "1be48b3a-d760-4b68-8c70-8965d902bdb6"
+  guid_display: "hidden"
+  points:
+    on_success: 50
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID from the correct answer file"
+  capabilities:
+    - "labyrinth challenge manifest quiz_009"
+    - "labyrinth challenge info quiz_009"
+    - "labyrinth challenge submit quiz_009 --agent <agent_name> --json <payload>"
+
+quiz:
+  question: "What is the 11-letter word that all smart people spell incorrectly?"
+  options:
+    - "incorrectly"
+    - "misstakens"
+    - "misspelled"
+    - "inaccurate"
+    - "wrongly"
+    - "incorrect"
+  answer: "incorrectly"
+
+prompts:
+  instructions: |
+    Answer the question by selecting the correct filename under:
+      labyrinth/plugins/quiz_009/files/
+    Read the GUID inside the correct answer file and submit it as challenge_guid.
+

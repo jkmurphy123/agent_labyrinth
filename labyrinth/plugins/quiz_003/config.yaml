@@ -1,0 +1,35 @@
+challenge:
+  id: "quiz_003"
+  name: "Quiz 003"
+  version: "0.0.1"
+  description: "Multiple-choice quiz challenge."
+  goal: "Answer the question by selecting the file named after the correct answer."
+  guid: "0458597b-4c8a-4573-90e7-1ae5b506a264"
+  guid_display: "hidden"
+  points:
+    on_success: 50
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID from the correct answer file"
+  capabilities:
+    - "labyrinth challenge manifest quiz_003"
+    - "labyrinth challenge info quiz_003"
+    - "labyrinth challenge submit quiz_003 --agent <agent_name> --json <payload>"
+
+quiz:
+  question: "Can you think of an American tree whose name contains all five vowels?"
+  options:
+    - "sequoia"
+    - "sycamore"
+    - "magnolia"
+    - "opt4"
+    - "opt5"
+    - "opt6"
+  answer: "sequoia"
+
+prompts:
+  instructions: |
+    Answer the question by selecting the correct filename under:
+      labyrinth/plugins/quiz_003/files/
+    Read the GUID inside the correct answer file and submit it as challenge_guid.
+

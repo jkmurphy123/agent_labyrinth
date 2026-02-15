@@ -34,3 +34,43 @@ plugins:
     path: "labyrinth/plugins/wargs_logic"
     enabled: true
     config_path: "labyrinth/plugins/wargs_logic/config.yaml"
+  - id: "quiz_001"
+    path: "labyrinth/plugins/quiz_001"
+    enabled: true
+    config_path: "labyrinth/plugins/quiz_001/config.yaml"
+  - id: "quiz_002"
+    path: "labyrinth/plugins/quiz_002"
+    enabled: true
+    config_path: "labyrinth/plugins/quiz_002/config.yaml"
+  - id: "quiz_003"
+    path: "labyrinth/plugins/quiz_003"
+    enabled: true
+    config_path: "labyrinth/plugins/quiz_003/config.yaml"
+  - id: "quiz_004"
+    path: "labyrinth/plugins/quiz_004"
+    enabled: true
+    config_path: "labyrinth/plugins/quiz_004/config.yaml"
+  - id: "quiz_005"
+    path: "labyrinth/plugins/quiz_005"
+    enabled: true
+    config_path: "labyrinth/plugins/quiz_005/config.yaml"
+  - id: "quiz_006"
+    path: "labyrinth/plugins/quiz_006"
+    enabled: true
+    config_path: "labyrinth/plugins/quiz_006/config.yaml"
+  - id: "quiz_007"
+    path: "labyrinth/plugins/quiz_007"
+    enabled: true
+    config_path: "labyrinth/plugins/quiz_007/config.yaml"
+  - id: "quiz_008"
+    path: "labyrinth/plugins/quiz_008"
+    enabled: true
+    config_path: "labyrinth/plugins/quiz_008/config.yaml"
+  - id: "quiz_009"
+    path: "labyrinth/plugins/quiz_009"
+    enabled: true
+    config_path: "labyrinth/plugins/quiz_009/config.yaml"
+  - id: "quiz_010"
+    path: "labyrinth/plugins/quiz_010"
+    enabled: true
+    config_path: "labyrinth/plugins/quiz_010/config.yaml"

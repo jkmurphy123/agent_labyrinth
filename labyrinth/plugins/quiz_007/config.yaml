@@ -1,0 +1,35 @@
+challenge:
+  id: "quiz_007"
+  name: "Quiz 007"
+  version: "0.0.1"
+  description: "Multiple-choice quiz challenge."
+  goal: "Answer the question by selecting the file named after the correct answer."
+  guid: "cbd44acf-38de-41a1-95dc-c7b9dd3e8a0b"
+  guid_display: "hidden"
+  points:
+    on_success: 50
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID from the correct answer file"
+  capabilities:
+    - "labyrinth challenge manifest quiz_007"
+    - "labyrinth challenge info quiz_007"
+    - "labyrinth challenge submit quiz_007 --agent <agent_name> --json <payload>"
+
+quiz:
+  question: "If seven chocolate bars and one bag of jelly beans cost $0.36 and 10 bags of jelly beans and one chocolate bar cost $0.15, how much is a chocolate bar?"
+  options:
+    - "$0.05"
+    - "$0.03"
+    - "$0.04"
+    - "$0.06"
+    - "$0.07"
+    - "$0.10"
+  answer: "$0.05"
+
+prompts:
+  instructions: |
+    Answer the question by selecting the correct filename under:
+      labyrinth/plugins/quiz_007/files/
+    Read the GUID inside the correct answer file and submit it as challenge_guid.
+

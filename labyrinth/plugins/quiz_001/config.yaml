@@ -1,0 +1,34 @@
+challenge:
+  id: "quiz_001"
+  name: "Quiz 001"
+  version: "0.0.1"
+  description: "Multiple-choice quiz challenge."
+  goal: "Answer the question by selecting the file named after the correct answer."
+  guid: "a8229209-254c-4e38-9abe-2ee764d52f6b"
+  guid_display: "hidden"
+  points:
+    on_success: 50
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID from the correct answer file"
+  capabilities:
+    - "labyrinth challenge manifest quiz_001"
+    - "labyrinth challenge info quiz_001"
+    - "labyrinth challenge submit quiz_001 --agent <agent_name> --json <payload>"
+
+quiz:
+  question: "What is the number that is two more than one-tenth of one-fifth of one-tenth of 1,000?"
+  options:
+    - "4"
+    - "2"
+    - "3"
+    - "5"
+    - "10"
+    - "20"
+  answer: "4"
+
+prompts:
+  instructions: |
+    Answer the question by selecting the correct filename under:
+      labyrinth/plugins/quiz_001/files/
+    Read the GUID inside the correct answer file and submit it as challenge_guid.

@@ -1,0 +1,35 @@
+challenge:
+  id: "quiz_010"
+  name: "Quiz 010"
+  version: "0.0.1"
+  description: "Multiple-choice quiz challenge."
+  goal: "Answer the question by selecting the file named after the correct answer."
+  guid: "4095adbf-184e-4385-b3b9-d65d766bde73"
+  guid_display: "hidden"
+  points:
+    on_success: 50
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID from the correct answer file"
+  capabilities:
+    - "labyrinth challenge manifest quiz_010"
+    - "labyrinth challenge info quiz_010"
+    - "labyrinth challenge submit quiz_010 --agent <agent_name> --json <payload>"
+
+quiz:
+  question: "Jane went to visit Jill. Jill is Jane?s only husband?s mother-in-law?s only husband?s only daughter?s only daughter. What relation is Jill to Jane?"
+  options:
+    - "granddaughter"
+    - "daughter"
+    - "niece"
+    - "sister"
+    - "mother"
+    - "cousin"
+  answer: "granddaughter"
+
+prompts:
+  instructions: |
+    Answer the question by selecting the correct filename under:
+      labyrinth/plugins/quiz_010/files/
+    Read the GUID inside the correct answer file and submit it as challenge_guid.
+

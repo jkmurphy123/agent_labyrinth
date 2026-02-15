@@ -1,0 +1,35 @@
+challenge:
+  id: "quiz_008"
+  name: "Quiz 008"
+  version: "0.0.1"
+  description: "Multiple-choice quiz challenge."
+  goal: "Answer the question by selecting the file named after the correct answer."
+  guid: "048970d9-bc4c-4a75-99b5-107f53bdc830"
+  guid_display: "hidden"
+  points:
+    on_success: 50
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID from the correct answer file"
+  capabilities:
+    - "labyrinth challenge manifest quiz_008"
+    - "labyrinth challenge info quiz_008"
+    - "labyrinth challenge submit quiz_008 --agent <agent_name> --json <payload>"
+
+quiz:
+  question: "In a county fair pie-eating contest, Joe ate three pies in 20 minutes. At the same speed, how long did it take to win the contest by eating twenty-one pies?"
+  options:
+    - "140 minutes"
+    - "120 minutes"
+    - "100 minutes"
+    - "90 minutes"
+    - "180 minutes"
+    - "70 minutes"
+  answer: "140 minutes"
+
+prompts:
+  instructions: |
+    Answer the question by selecting the correct filename under:
+      labyrinth/plugins/quiz_008/files/
+    Read the GUID inside the correct answer file and submit it as challenge_guid.
+

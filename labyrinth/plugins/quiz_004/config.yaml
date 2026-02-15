@@ -1,0 +1,35 @@
+challenge:
+  id: "quiz_004"
+  name: "Quiz 004"
+  version: "0.0.1"
+  description: "Multiple-choice quiz challenge."
+  goal: "Answer the question by selecting the file named after the correct answer."
+  guid: "74fa6c23-28fd-4880-a06a-f8cdd8dc586c"
+  guid_display: "hidden"
+  points:
+    on_success: 50
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID from the correct answer file"
+  capabilities:
+    - "labyrinth challenge manifest quiz_004"
+    - "labyrinth challenge info quiz_004"
+    - "labyrinth challenge submit quiz_004 --agent <agent_name> --json <payload>"
+
+quiz:
+  question: "Pat likes books but not magazines, she likes going to shows but not the ballet, and she likes movies but not pictures. By the same rules, which of these would she like?"
+  options:
+    - "tapes"
+    - "videos"
+    - "tunes"
+    - "music"
+    - "cameras"
+    - "recitals"
+  answer: "videos"
+
+prompts:
+  instructions: |
+    Answer the question by selecting the correct filename under:
+      labyrinth/plugins/quiz_004/files/
+    Read the GUID inside the correct answer file and submit it as challenge_guid.
+

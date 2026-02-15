@@ -29,6 +29,7 @@ class BaseChallengePlugin:
             },
             "capabilities": challenge.get("capabilities", []),
             "guid": challenge.get("guid_display", challenge.get("guid", "")),
+            "quiz": cfg.get("quiz", {}),
         }
 
     def get_secret_guid(self, cfg: dict[str, Any]) -> str:

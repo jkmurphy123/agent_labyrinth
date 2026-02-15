@@ -1,0 +1,35 @@
+challenge:
+  id: "quiz_006"
+  name: "Quiz 006"
+  version: "0.0.1"
+  description: "Multiple-choice quiz challenge."
+  goal: "Answer the question by selecting the file named after the correct answer."
+  guid: "cd224f0f-227e-4b04-8fd0-8bafad46d922"
+  guid_display: "hidden"
+  points:
+    on_success: 50
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID from the correct answer file"
+  capabilities:
+    - "labyrinth challenge manifest quiz_006"
+    - "labyrinth challenge info quiz_006"
+    - "labyrinth challenge submit quiz_006 --agent <agent_name> --json <payload>"
+
+quiz:
+  question: "Begin with the number of legs on a spider, add the number of stars in the U.S. flag in 1935, divide by two and add the number of leaves that enables you to distinguish poison ivy. What do you have?"
+  options:
+    - "31"
+    - "30"
+    - "29"
+    - "28"
+    - "32"
+    - "33"
+  answer: "31"
+
+prompts:
+  instructions: |
+    Answer the question by selecting the correct filename under:
+      labyrinth/plugins/quiz_006/files/
+    Read the GUID inside the correct answer file and submit it as challenge_guid.
+

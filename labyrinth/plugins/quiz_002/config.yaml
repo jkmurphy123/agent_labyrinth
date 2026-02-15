@@ -1,0 +1,35 @@
+challenge:
+  id: "quiz_002"
+  name: "Quiz 002"
+  version: "0.0.1"
+  description: "Multiple-choice quiz challenge."
+  goal: "Answer the question by selecting the file named after the correct answer."
+  guid: "d4efafc2-dd2e-48e5-ac93-3b21cd368d58"
+  guid_display: "hidden"
+  points:
+    on_success: 50
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID from the correct answer file"
+  capabilities:
+    - "labyrinth challenge manifest quiz_002"
+    - "labyrinth challenge info quiz_002"
+    - "labyrinth challenge submit quiz_002 --agent <agent_name> --json <payload>"
+
+quiz:
+  question: "Bill climbs a two-mile hill at an uphill speed of two miles per hour, spends no time at the top, and immediately walks down at six miles per hour. What is his average speed for the up and down trips?"
+  options:
+    - "3"
+    - "2"
+    - "4"
+    - "3.5"
+    - "5"
+    - "6"
+  answer: "3"
+
+prompts:
+  instructions: |
+    Answer the question by selecting the correct filename under:
+      labyrinth/plugins/quiz_002/files/
+    Read the GUID inside the correct answer file and submit it as challenge_guid.
+
