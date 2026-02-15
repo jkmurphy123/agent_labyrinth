@@ -106,3 +106,7 @@ plugins:
     path: "labyrinth/plugins/image_quiz_002"
     enabled: true
     config_path: "labyrinth/plugins/image_quiz_002/config.yaml"
+  - id: "word_change_001"
+    path: "labyrinth/plugins/word_change_001"
+    enabled: true
+    config_path: "labyrinth/plugins/word_change_001/config.yaml"
