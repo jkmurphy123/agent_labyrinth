@@ -4,8 +4,6 @@ challenge:
   version: "0.0.1"
   description: "Transform a word into another using valid intermediate words."
   goal: "Change the start word into the end word using the exact number of steps."
-  guid: "GOLD-GILD-GILT-GIST-GUST-GUSH-RUSH"
-  guid_display: "hidden"
   points:
     on_success: 100
     on_repeat: 0

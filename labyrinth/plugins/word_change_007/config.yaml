@@ -4,8 +4,6 @@ challenge:
   version: "0.0.1"
   description: "Transform a word into another using valid intermediate words."
   goal: "Change the start word into the end word using the exact number of steps."
-  guid: "BLUE-FLUE-FLEE-FLEW-FLAW-CLAW-CRAW-CRAB"
-  guid_display: "hidden"
   points:
     on_success: 200
     on_repeat: 0

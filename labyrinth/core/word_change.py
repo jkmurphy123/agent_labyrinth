@@ -3,6 +3,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
+from wordfreq import zipf_frequency
+
 from labyrinth.core.models import ChallengeResult
 from labyrinth.core.registry import BaseChallengePlugin
 
@@ -42,11 +44,11 @@ class WordChangeChallenge(BaseChallengePlugin):
         )
 
     def submit(self, agent_name: str, submission: dict[str, Any], cfg: dict[str, Any]) -> ChallengeResult:
-        if not self.validate_guid(submission, cfg):
+        if not self._validate_chain(submission, cfg):
             return ChallengeResult(
                 status="fail",
                 points=0,
-                message="Invalid or missing challenge_guid.",
+                message="Invalid chain. Ensure valid words, one-letter changes, and correct steps.",
             )
 
         points_cfg = cfg.get("challenge", {}).get("points", {})
@@ -56,3 +58,35 @@ class WordChangeChallenge(BaseChallengePlugin):
             points=on_success,
             message=f"Word change solved for {agent_name}.",
         )
+
+    def _validate_chain(self, submission: dict[str, Any], cfg: dict[str, Any]) -> bool:
+        raw = submission.get("challenge_guid")
+        if not isinstance(raw, str) or not raw.strip():
+            return False
+
+        wc = WordChangeDefinition.from_config(cfg)
+        if not wc.start or not wc.end or wc.steps <= 0:
+            return False
+
+        words = [w.strip().upper() for w in raw.split("-") if w.strip()]
+        if len(words) != wc.steps + 1:
+            return False
+        if words[0] != wc.start or words[-1] != wc.end:
+            return False
+
+        length = len(wc.start)
+        if any(len(w) != length for w in words):
+            return False
+
+        # Validate each word is a real word (wordfreq, non-zero Zipf)
+        for w in words:
+            if zipf_frequency(w.lower(), "en") <= 0:
+                return False
+
+        # Validate one-letter change per step
+        for a, b in zip(words, words[1:]):
+            diffs = sum(1 for x, y in zip(a, b) if x != y)
+            if diffs != 1:
+                return False
+
+        return True
