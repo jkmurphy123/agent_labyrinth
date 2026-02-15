@@ -120,6 +120,34 @@ def agent_list(
     console.print(table)
 
 
+@agent_app.command("clear-score")
+def agent_clear_score(
+    name: str = typer.Option(..., "--name", "-n", help="Agent display name (unique)"),
+    hard: bool = typer.Option(
+        False,
+        "--hard",
+        help="Delete the agent record after clearing runs.",
+    ),
+    config: str = typer.Option("labyrinth.yaml", "--config", help="Path to master config"),
+):
+    _, conn, _ = _get_env(config)
+    agent_row = fetch_one(conn, "SELECT id, name FROM agents WHERE name = ?", (name,))
+    if not agent_row:
+        console.print(f"âŒ Unknown agent '{name}'.")
+        raise typer.Exit(code=2)
+
+    conn.execute("DELETE FROM runs WHERE agent_id = ?", (int(agent_row["id"]),))
+    if hard:
+        conn.execute("DELETE FROM agents WHERE id = ?", (int(agent_row["id"]),))
+    conn.commit()
+    if hard:
+        console.print(f"âœ… Cleared scores and removed agent: [bold]{name}[/bold]")
+        append_audit({"event": "agent_clear_score_hard", "agent": name})
+    else:
+        console.print(f"âœ… Cleared scores for agent: [bold]{name}[/bold]")
+        append_audit({"event": "agent_clear_score", "agent": name})
+
+
 @challenge_app.command("list")
 def challenge_list(
     config: str = typer.Option("labyrinth.yaml", "--config", help="Path to master config"),
@@ -210,6 +238,7 @@ def challenge_submit(
     p = plugins[challenge_id]
     points_cfg = p.cfg.get("challenge", {}).get("points", {})
     on_repeat = int(points_cfg.get("on_repeat", 0))
+    on_success = int(points_cfg.get("on_success", 0))
 
     prior = fetch_one(
         conn,
@@ -220,7 +249,9 @@ def challenge_submit(
     result = p.instance.submit(agent, submission, p.cfg)
 
     points_awarded = result.points
-    if prior and on_repeat == 0 and result.status == "success":
+    if result.status == "fail":
+        points_awarded = -abs(on_success)
+    elif prior and on_repeat == 0:
         points_awarded = 0
 
     conn.execute(

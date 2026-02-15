@@ -26,6 +26,7 @@ class BaseChallengePlugin:
             "scoring": {
                 "on_success": int(points_cfg.get("on_success", 0)),
                 "on_repeat": int(points_cfg.get("on_repeat", 0)),
+                "on_fail": -abs(int(points_cfg.get("on_success", 0))),
             },
             "capabilities": challenge.get("capabilities", []),
             "guid": challenge.get("guid_display", challenge.get("guid", "")),

@@ -45,6 +45,7 @@ Create your own detailed plan to solve a Labyrinth challenge by querying the man
 6. Verify outcome.
    - Ensure submission returns success.
    - If failure, re-check rules and inputs and retry.
+   - Note: wrong submissions reduce your score by the challenge's point value.
 
 ## Command Reference
 - Manifest:
@@ -57,3 +58,4 @@ Create your own detailed plan to solve a Labyrinth challenge by querying the man
 
 ## Notes
 - If running from another directory, set `LABYRINTH_CONFIG` or pass `config_path` in the payload.
+- Wrong submissions reduce your score by the challenge's point value.
