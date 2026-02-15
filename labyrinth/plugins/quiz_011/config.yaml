@@ -1,0 +1,34 @@
+challenge:
+  id: "quiz_011"
+  name: "Quiz 011"
+  version: "0.0.1"
+  description: "Multiple-choice quiz challenge."
+  goal: "Answer the question by selecting the file named after the correct answer."
+  guid: "b510e97b-f384-43da-a2bc-5bb127125c42"
+  guid_display: "hidden"
+  points:
+    on_success: 50
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID from the correct answer file"
+  capabilities:
+    - "labyrinth challenge manifest quiz_011"
+    - "labyrinth challenge info quiz_011"
+    - "labyrinth challenge submit quiz_011 --agent <agent_name> --json <payload>"
+
+quiz:
+  question: "In a foot race, Jerry was neither first nor last. Janet beat Jerry, Jerry beat Pat. Charlie was neither first nor last. Charlie beat Rachel. Pat beat Charlie. Who came in last?"
+  options:
+    - "Rachel"
+    - "Pat"
+    - "Jerry"
+    - "Charlie"
+    - "Janet"
+    - "Sam"
+
+prompts:
+  instructions: |
+    Answer the question by selecting the correct filename under:
+      labyrinth/plugins/quiz_011/files/
+    Read the GUID inside the correct answer file and submit it as challenge_guid.
+

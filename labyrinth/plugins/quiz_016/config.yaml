@@ -1,0 +1,34 @@
+challenge:
+  id: "quiz_016"
+  name: "Quiz 016"
+  version: "0.0.1"
+  description: "Multiple-choice quiz challenge."
+  goal: "Answer the question by selecting the file named after the correct answer."
+  guid: "08abcd68-868c-46c8-b9a8-f8266c1ba15a"
+  guid_display: "hidden"
+  points:
+    on_success: 50
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID from the correct answer file"
+  capabilities:
+    - "labyrinth challenge manifest quiz_016"
+    - "labyrinth challenge info quiz_016"
+    - "labyrinth challenge submit quiz_016 --agent <agent_name> --json <payload>"
+
+quiz:
+  question: "What is the number that is one half of one quarter of one tenth of 400?"
+  options:
+    - "5"
+    - "4"
+    - "6"
+    - "8"
+    - "10"
+    - "2"
+
+prompts:
+  instructions: |
+    Answer the question by selecting the correct filename under:
+      labyrinth/plugins/quiz_016/files/
+    Read the GUID inside the correct answer file and submit it as challenge_guid.
+

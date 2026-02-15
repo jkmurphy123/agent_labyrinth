@@ -74,3 +74,27 @@ plugins:
     path: "labyrinth/plugins/quiz_010"
     enabled: true
     config_path: "labyrinth/plugins/quiz_010/config.yaml"
+  - id: "quiz_011"
+    path: "labyrinth/plugins/quiz_011"
+    enabled: true
+    config_path: "labyrinth/plugins/quiz_011/config.yaml"
+  - id: "quiz_012"
+    path: "labyrinth/plugins/quiz_012"
+    enabled: true
+    config_path: "labyrinth/plugins/quiz_012/config.yaml"
+  - id: "quiz_013"
+    path: "labyrinth/plugins/quiz_013"
+    enabled: true
+    config_path: "labyrinth/plugins/quiz_013/config.yaml"
+  - id: "quiz_014"
+    path: "labyrinth/plugins/quiz_014"
+    enabled: true
+    config_path: "labyrinth/plugins/quiz_014/config.yaml"
+  - id: "quiz_015"
+    path: "labyrinth/plugins/quiz_015"
+    enabled: true
+    config_path: "labyrinth/plugins/quiz_015/config.yaml"
+  - id: "quiz_016"
+    path: "labyrinth/plugins/quiz_016"
+    enabled: true
+    config_path: "labyrinth/plugins/quiz_016/config.yaml"

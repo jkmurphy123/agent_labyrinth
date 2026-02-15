@@ -1,0 +1,34 @@
+challenge:
+  id: "quiz_012"
+  name: "Quiz 012"
+  version: "0.0.1"
+  description: "Multiple-choice quiz challenge."
+  goal: "Answer the question by selecting the file named after the correct answer."
+  guid: "315e325d-418a-4dc8-a806-9071aeb9a05c"
+  guid_display: "hidden"
+  points:
+    on_success: 50
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID from the correct answer file"
+  capabilities:
+    - "labyrinth challenge manifest quiz_012"
+    - "labyrinth challenge info quiz_012"
+    - "labyrinth challenge submit quiz_012 --agent <agent_name> --json <payload>"
+
+quiz:
+  question: "Find the number that best completes the following sequence: 1 2 4 7 11 ? 22"
+  options:
+    - "16"
+    - "15"
+    - "14"
+    - "17"
+    - "18"
+    - "13"
+
+prompts:
+  instructions: |
+    Answer the question by selecting the correct filename under:
+      labyrinth/plugins/quiz_012/files/
+    Read the GUID inside the correct answer file and submit it as challenge_guid.
+

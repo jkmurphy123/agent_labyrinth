@@ -1,0 +1,34 @@
+challenge:
+  id: "quiz_013"
+  name: "Quiz 013"
+  version: "0.0.1"
+  description: "Multiple-choice quiz challenge."
+  goal: "Answer the question by selecting the file named after the correct answer."
+  guid: "634f485d-84d1-4ee7-9cee-00f81e7f1a89"
+  guid_display: "hidden"
+  points:
+    on_success: 50
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID from the correct answer file"
+  capabilities:
+    - "labyrinth challenge manifest quiz_013"
+    - "labyrinth challenge info quiz_013"
+    - "labyrinth challenge submit quiz_013 --agent <agent_name> --json <payload>"
+
+quiz:
+  question: "Marian bought 4 oranges and 3 lemons for 90 cents. The next day she bought 3 oranges and 4 lemons for 85 cents. How much did each lemon and orange cost?"
+  options:
+    - "Orange 15 cents, Lemon 10 cents"
+    - "Orange 10 cents, Lemon 15 cents"
+    - "Orange 20 cents, Lemon 5 cents"
+    - "Orange 12 cents, Lemon 13 cents"
+    - "Orange 18 cents, Lemon 9 cents"
+    - "Orange 8 cents, Lemon 14 cents"
+
+prompts:
+  instructions: |
+    Answer the question by selecting the correct filename under:
+      labyrinth/plugins/quiz_013/files/
+    Read the GUID inside the correct answer file and submit it as challenge_guid.
+

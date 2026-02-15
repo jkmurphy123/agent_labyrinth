@@ -1,0 +1,34 @@
+challenge:
+  id: "quiz_015"
+  name: "Quiz 015"
+  version: "0.0.1"
+  description: "Multiple-choice quiz challenge."
+  goal: "Answer the question by selecting the file named after the correct answer."
+  guid: "f2943ce4-4b1e-4f54-adc5-5b56e7e70488"
+  guid_display: "hidden"
+  points:
+    on_success: 50
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID from the correct answer file"
+  capabilities:
+    - "labyrinth challenge manifest quiz_015"
+    - "labyrinth challenge info quiz_015"
+    - "labyrinth challenge submit quiz_015 --agent <agent_name> --json <payload>"
+
+quiz:
+  question: "If two typists can type two pages in two minutes, how many typists will it take to type 18 pages in six minutes?"
+  options:
+    - "6"
+    - "3"
+    - "4"
+    - "5"
+    - "8"
+    - "9"
+
+prompts:
+  instructions: |
+    Answer the question by selecting the correct filename under:
+      labyrinth/plugins/quiz_015/files/
+    Read the GUID inside the correct answer file and submit it as challenge_guid.
+
