@@ -25,7 +25,6 @@ quiz:
     - "sister"
     - "mother"
     - "cousin"
-  answer: "granddaughter"
 
 prompts:
   instructions: |

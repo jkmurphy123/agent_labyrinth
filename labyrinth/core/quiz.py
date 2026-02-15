@@ -11,15 +11,13 @@ from labyrinth.core.registry import BaseChallengePlugin
 class QuizDefinition:
     question: str
     options: list[str]
-    answer: str
 
     @classmethod
     def from_config(cls, cfg: dict[str, Any]) -> "QuizDefinition":
         quiz = cfg.get("quiz", {})
         question = str(quiz.get("question", "")).strip()
         options = [str(o) for o in quiz.get("options", [])]
-        answer = str(quiz.get("answer", "")).strip()
-        return cls(question=question, options=options, answer=answer)
+        return cls(question=question, options=options)
 
 
 class QuizChallenge(BaseChallengePlugin):
