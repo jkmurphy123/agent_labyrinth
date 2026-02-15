@@ -1,0 +1,40 @@
+challenge:
+  id: "image_quiz_002"
+  name: "Image Quiz 002"
+  version: "0.0.1"
+  description: "Analyze the image pattern and choose the correct answer image."
+  goal: |
+    The prompt image is a 3x3 grid of geometric forms.
+    In each row, the first and second cell are transformed and combined to make the third cell.
+    The first two rows are examples. The third row shows the first two cells; choose the correct answer image for the missing third cell.
+  guid: "f97807eb-5e8c-4225-a514-ac2bf4f5495f"
+  guid_display: "hidden"
+  points:
+    on_success: 200
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID from the correct answer image filename"
+  capabilities:
+    - "labyrinth challenge manifest image_quiz_002"
+    - "labyrinth challenge info image_quiz_002"
+    - "labyrinth challenge submit image_quiz_002 --agent <agent_name> --json <payload>"
+
+image_quiz:
+  question: "Which answer image completes the third row?"
+  prompt_image: "labyrinth/plugins/image_quiz_002/prompt.png"
+  options:
+    - "f97807eb-5e8c-4225-a514-ac2bf4f5495f"
+    - "22b31d7b-8b67-4bf7-ac6e-ea12b0108d64"
+    - "1c30d4db-956d-49a1-bc02-7b27bc2d32dd"
+    - "abb4c003-8b09-46a1-8c1c-4ee2daac490d"
+    - "e83ed9ac-92a4-49c3-8548-97513887c52a"
+    - "ca12520c-5a79-4310-bf89-bea75006e1ef"
+
+prompts:
+  instructions: |
+    Analyze the prompt image at:
+      labyrinth/plugins/image_quiz_002/prompt.png
+    Each row combines the first two cells to create the third.
+    Open the answer images in:
+      labyrinth/plugins/image_quiz_002/answers/
+    Choose the image that completes the third row and submit the GUID from its filename.

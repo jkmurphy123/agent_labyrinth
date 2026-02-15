@@ -208,3 +208,4 @@ __marimo__/
 instructions.txt
 labyrinth.db
 labyrinth_audit.jsonl
+labyrinth/plugins/image_quiz_002/answer_guids.txt

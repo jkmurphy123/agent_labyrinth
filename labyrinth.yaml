@@ -102,3 +102,7 @@ plugins:
     path: "labyrinth/plugins/image_quiz_001"
     enabled: true
     config_path: "labyrinth/plugins/image_quiz_001/config.yaml"
+  - id: "image_quiz_002"
+    path: "labyrinth/plugins/image_quiz_002"
+    enabled: true
+    config_path: "labyrinth/plugins/image_quiz_002/config.yaml"
