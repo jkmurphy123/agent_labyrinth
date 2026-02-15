@@ -1,0 +1,36 @@
+challenge:
+  id: "word_change_007"
+  name: "Change a Word 007"
+  version: "0.0.1"
+  description: "Transform a word into another using valid intermediate words."
+  goal: "Change the start word into the end word using the exact number of steps."
+  guid: "BLUE-FLUE-FLEE-FLEW-FLAW-CLAW-CRAW-CRAB"
+  guid_display: "hidden"
+  points:
+    on_success: 200
+    on_repeat: 0
+  inputs:
+    challenge_guid: "string; submit the GUID derived from your word chain"
+  capabilities:
+    - "labyrinth challenge manifest word_change_007"
+    - "labyrinth challenge info word_change_007"
+    - "labyrinth challenge submit word_change_007 --agent <agent_name> --json <payload>"
+
+word_change:
+  start: "BLUE"
+  end: "CRAB"
+  steps: 7
+
+prompts:
+  instructions: |
+    Can you change the start word into the end word using the number of steps given?
+    Change only one letter per step and do not change the order of the letters.
+    Each step should produce a real word. For example, to change BEAD into TRIM in 4 steps
+    the solution would be BEAD->BEAM->TEAM->TRAM->TRIM. Generate a GUID from your solution
+    by listing your words with dashes (for example, "BEAD-BEAM-TEAM-TRAM-TRIM") and submitting
+    it for confirmation.
+
+    Start: BLUE
+    End: CRAB
+    Steps: 7
+

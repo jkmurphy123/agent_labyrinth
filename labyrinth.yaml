@@ -110,3 +110,27 @@ plugins:
     path: "labyrinth/plugins/word_change_001"
     enabled: true
     config_path: "labyrinth/plugins/word_change_001/config.yaml"
+  - id: "word_change_002"
+    path: "labyrinth/plugins/word_change_002"
+    enabled: true
+    config_path: "labyrinth/plugins/word_change_002/config.yaml"
+  - id: "word_change_003"
+    path: "labyrinth/plugins/word_change_003"
+    enabled: true
+    config_path: "labyrinth/plugins/word_change_003/config.yaml"
+  - id: "word_change_004"
+    path: "labyrinth/plugins/word_change_004"
+    enabled: true
+    config_path: "labyrinth/plugins/word_change_004/config.yaml"
+  - id: "word_change_005"
+    path: "labyrinth/plugins/word_change_005"
+    enabled: true
+    config_path: "labyrinth/plugins/word_change_005/config.yaml"
+  - id: "word_change_006"
+    path: "labyrinth/plugins/word_change_006"
+    enabled: true
+    config_path: "labyrinth/plugins/word_change_006/config.yaml"
+  - id: "word_change_007"
+    path: "labyrinth/plugins/word_change_007"
+    enabled: true
+    config_path: "labyrinth/plugins/word_change_007/config.yaml"
