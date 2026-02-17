@@ -1,0 +1,13 @@
+{
+  "types": {
+    "Chest": {
+      "fields": ["id", "type", "name", "locked", "requires_item", "message_locked", "on_unlock"]
+    },
+    "Button": {
+      "fields": ["id", "type", "name", "message", "reveals_item"]
+    },
+    "Door": {
+      "fields": ["id", "type", "name", "locked", "requires_item", "message_locked", "message_unlocked", "reveals_exit"]
+    }
+  }
+}

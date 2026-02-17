@@ -1,0 +1,79 @@
+{
+  "world_id": "breadcrumb_demo_001",
+  "start_room": "room1",
+  "fairness": {
+    "reveal_required_item_name": true,
+    "auto_describe_items_on_acquire": true,
+    "accept_case_insensitive_submit": true,
+    "movement_failure_repeats_room": true,
+    "max_steps": null
+  },
+  "items": {
+    "key_bronze": {
+      "name": "Bronze Key",
+      "description": "A small bronze key.",
+      "initially_visible": false
+    },
+    "paper_guid": {
+      "name": "Crumpled Paper",
+      "description": "The paper reads:\n\nGUID: 3F2504E0-4F89-11D3-9A0C-0305E82C3301"
+    }
+  },
+  "rooms": {
+    "room1": {
+      "title": "Room 1",
+      "description": "A stone chamber with a single button on the wall.",
+      "exits": { "E": "room2" },
+      "floor_item": "key_bronze",
+      "usable": {
+        "id": "button_room1",
+        "type": "Button",
+        "name": "Button",
+        "message": "You press the button. Something appears on the floor.",
+        "reveals_item": "key_bronze"
+      }
+    },
+    "room2": {
+      "title": "Room 2",
+      "description": "A narrow room with an old chest.",
+      "exits": { "W": "room1", "S": "room3" },
+      "floor_item": null,
+      "usable": {
+        "id": "chest_room2",
+        "type": "Chest",
+        "name": "Chest",
+        "locked": true,
+        "requires_item": "key_bronze",
+        "message_locked": "The chest is locked.",
+        "on_unlock": {
+          "grant_item": "paper_guid",
+          "message": "You unlock the chest and find a paper."
+        }
+      }
+    },
+    "room3": {
+      "title": "Room 3",
+      "description": "A hallway ends at a heavy door.",
+      "exits": { "N": "room2" },
+      "floor_item": null,
+      "usable": {
+        "id": "door_room3",
+        "type": "Door",
+        "name": "Door",
+        "locked": true,
+        "requires_item": "key_bronze",
+        "message_locked": "The door is locked.",
+        "message_unlocked": "The door unlocks and opens.",
+        "reveals_exit": { "direction": "E", "to_room": "room4" }
+      }
+    },
+    "room4": {
+      "title": "Room 4",
+      "description": "An empty room with cold stone walls.",
+      "exits": { "W": "room3" },
+      "floor_item": null,
+      "usable": null
+    }
+  },
+  "win": { "type": "submit_guid" }
+}

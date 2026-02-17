@@ -134,3 +134,7 @@ plugins:
     path: "labyrinth/plugins/word_change_007"
     enabled: true
     config_path: "labyrinth/plugins/word_change_007/config.yaml"
+  - id: "breadcrumb_labyrinth"
+    path: "labyrinth/plugins/breadcrumb_labyrinth"
+    enabled: true
+    config_path: "labyrinth/plugins/breadcrumb_labyrinth/config.yaml"

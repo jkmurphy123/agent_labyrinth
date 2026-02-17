@@ -1,0 +1,29 @@
+challenge:
+  id: "breadcrumb_labyrinth"
+  name: "Breadcrumb Labyrinth"
+  version: "0.0.1"
+  description: "A deterministic text-adventure labyrinth."
+  goal: "Find the GUID on the paper and Submit it."
+  points:
+    on_success: 100
+    on_repeat: 0
+  inputs:
+    command: "string; one of Enter, N/E/S/W, Get, Use, Use <item>, Inventory, Look, Submit <GUID>"
+  capabilities:
+    - "labyrinth challenge info breadcrumb_labyrinth"
+    - "labyrinth challenge submit breadcrumb_labyrinth --agent <agent_name> --json {\"command\":\"...\"}"
+
+prompts:
+  instructions: |
+    Commands:
+      Enter
+      N / E / S / W
+      Get
+      Use
+      Use <inventory item>
+      Inventory
+      Look
+      Submit <GUID>
+
+    Start in room1. Find a key revealed by a button, unlock a chest to obtain paper,
+    read the GUID in its description, then Submit it to pass.
